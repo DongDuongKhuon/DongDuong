@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  overflow: hidden;
+}
+
+.video-container {
+  position: relative;
+  width: 70%; /* Điều chỉnh để video chiếm 80% chiều rộng */
+  height: 70%; /* Điều chỉnh để video chiếm 80% chiều cao */
+  margin: 10% auto; /* Căn giữa và thêm khoảng padding 10% */
+  border: 2px solid #007BFF;
+  border-radius: 10px;
+  background-color: #000; /* Để nền đen khi video chưa phát */
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.joystick-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  transform: translate(0, 0);
+}
+
+.joystick {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 2px solid #007BFF;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.joystick .button {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.joystick .button:hover {
+  background-color: #0056b3;
+}
+
+.joystick .button.up {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.joystick .button.down {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.joystick .button.left {
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.joystick .button.right {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.joystick .button.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ccc;
+  cursor: default;
+}
+</style>
+</head>
+<body>
+
+<div class="video-container">
+  <video src="http://<camera-ip>:<port>/video_feed" autoplay></video> <!-- Thay <camera-ip> và <port> bằng địa chỉ thực của camera -->
+  <div class="joystick-container">
+    <div class="joystick">
+      <a href="/FORWARD" class="button up">↑</a>
+      <a href="/BACKWARD" class="button down">↓</a>
+      <a href="/LEFT" class="button left">←</a>
+      <a href="/RIGHT" class="button right">→</a>
+      <div class="button center"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
